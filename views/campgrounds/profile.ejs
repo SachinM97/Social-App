@@ -1,0 +1,47 @@
+<% layout('layouts/boilerplate')%>
+    <link rel="stylesheet" href="/stylesheets/star.css">
+    <% if(profiles.length> 0) { %>
+        <div class="row">
+            <% for (let profile of profiles) {%>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <% for (let image of profile.images) {%>
+                            <h5 class="card-title mt=3 ml-3">
+                                <%= profile.title%>
+                            </h5>
+                            <img src="<%= image.url %>" class="card-img-top img-thumbnail">
+                            <% } %>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <%= profile.Status%>
+                                    </p>
+                                    <hr>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item text-muted">Submitted by
+                                            <%= profile.owner.username%>
+                                        </li>
+                                    </ul>
+                                    <hr>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <%= profile.location%>
+                                        </li>
+                                    </ul>
+                                </div>
+                    </div>
+                    <button type="button" class="btn btn-info my-3 "><a href="index"
+                            style="text-decoration: none; color: white">All
+                            Post</a></button>
+                    <% if( currentUser && profile.owner.equals(currentUser._id)) {%>
+                        <button type="button" class="btn btn-warning"><a href="<%= profile._id  %>/edit "
+                                style="text-decoration: none; color: white">Edit Post</a></button>
+                        <form action="<%= profile._id%>?_method=DELETE" method="POST" class="d-inline">
+                            <button class=" btn btn-danger">Delete</button>
+                        </form>
+                        <% } %>
+                </div>
+        </div>
+        <% } %>
+            <% } else{ %>
+                <h1>No posts available</h1>
+                <% } %>

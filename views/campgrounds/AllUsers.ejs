@@ -1,0 +1,32 @@
+<% layout('layouts/boilerplate')%>
+
+
+    <form class="d-flex" action="/campgrounds/AllUsers" method="POST">
+        <div class="row">
+            <div class="col-md-2 text-right pt-2">
+                <label for="search">Search by User</label>
+            </div>
+            <div class="col-md-8">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="search"
+                    name="search">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <br><br>
+
+    <ul class="list-group">
+        <div class="row">
+            <% for (let user of users) { %>
+                <div class="col-md-2">
+                    <li class="list-group-item list-group-item-dark text-uppercase font-weight-bold my-2"
+                        style="border-radius: 5px; border: 3px solid black">
+                        <%= user.username %>
+                    </li>
+                </div>
+                <% } %>
+        </div>
+    </ul>
