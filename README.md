@@ -1,2 +1,2 @@
 # Social-App
-https://thawing-beach-46586.herokuapp.com/
+https://thawing-beach-46586.herokuapp.com/register
